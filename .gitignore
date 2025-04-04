@@ -30,3 +30,4 @@ nyc_output/
 
 # Docker & Deployment Files (if using Docker or CI/CD)
 docker-compose.override.yml
+.qodo
