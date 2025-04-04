@@ -1,0 +1,32 @@
+# Node modules (prevents committing unnecessary dependencies)
+node_modules/
+
+# Environment Variables (prevents leaking sensitive API keys, database credentials)
+.env
+
+# Logs (avoid committing runtime logs)
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build Files (if using TypeScript or bundlers)
+dist/
+build/
+
+# IDE Specific Files (Editor-specific settings, cache files)
+.vscode/
+.idea/
+.DS_Store
+
+# OS Files (Unnecessary files created by different operating systems)
+Thumbs.db
+Desktop.ini
+
+# Debugging & Test Coverage (Prevents unnecessary test coverage reports)
+coverage/
+nyc_output/
+
+# Docker & Deployment Files (if using Docker or CI/CD)
+docker-compose.override.yml
