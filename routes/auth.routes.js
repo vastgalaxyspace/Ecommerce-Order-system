@@ -2,12 +2,13 @@ const express=require("express");
 const router=express.Router();
 
 const authcontroller=require("../controllers/auth.controllers");
+const authMiddleware=require("../middleware/authMiddleware");
 
 
 
 router.post('/register',authcontroller.register);
 router.post('/login',authcontroller.login);
-router.get('/profile',authcontroller.getprofile);
+router.get('/profile',authMiddleware.verifyToken,authcontroller.getprofile);
 
 
 module.exports=router;

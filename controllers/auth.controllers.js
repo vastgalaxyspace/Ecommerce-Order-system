@@ -63,10 +63,14 @@ try{
         {expiresIn:"1h"}
     );
 
-    res.status.json({
+   res.status(200).json({
         message:"Login successful",
         token,
-       role:user.role
+        user:{
+            id:user._id,
+            email:user.email,
+            role:user.role
+        }
     });
 }catch(error){
     return res.status(500).json({message:error.message})
