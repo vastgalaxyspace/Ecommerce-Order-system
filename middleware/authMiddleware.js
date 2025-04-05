@@ -11,8 +11,8 @@ authMiddleware.verifyToken = (req, res, next) => {
   }
 
   const token = authHeader.split(" ")[1];
-  console.log("Incoming token:", req.headers.authorization);
- // Safely extract the token
+  ;
+ 
 
   try {
     const decoded = jwt.verify(token, JWT_SERECT);

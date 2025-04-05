@@ -5,11 +5,14 @@ const app=express();
 
 const connectDB= require('./config/dbconnect.config');
 const authroutes=require('./routes/auth.routes');
+const productroutes=require('./routes/product.routes');
 
 connectDB();
 app.use(express.json());
 
 app.use('/auth',authroutes);
+app.use('/products',productroutes);
+
 
 
 app.listen(process.env.PORT || 5000,()=>{
