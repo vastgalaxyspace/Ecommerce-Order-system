@@ -45,5 +45,24 @@ cd e-commerce-backend
 npm install
 npm start
 
-![image](https://github.com/user-attachments/assets/081748ea-8a73-4d17-9b1d-94a4b8188f59)
+🔐 Authentication Routes (/auth)
+Method	Endpoint  Description       Auth Required
+POST	/register	Register User/Admin    ❌
+POST	/login	  Login User/Admin	     ❌
+GET	/profile    Get Profile Info	     ✅
+POST	/logout   Logout User            ✅
 
+🛍 Product Routes (/products)
+Method    	Endpoint	      Description             Access
+GET   	/getallproducts	 Get All Products (Public)  	Public
+POST	  /addproduct      Add New Product	           Admin Only
+GET   	/getproduct/:id  Get Product Details by ID    Public
+PATCH	 /updateproduct/:id	Update Product by ID	     Admin Only
+GET   	/dashboard	     Product Stats Dashboard	   Admin Only
+
+
+📦 Order Routes (/orders)
+Method	 Endpoint	     Description	            Access
+POST	  /createorder	 Create a new order	    User Only
+GET     /getallorders	  Get all orders (user)	User/Admin
+PATCH	 /:id/cancel	   Cancel order by ID	    User Only
