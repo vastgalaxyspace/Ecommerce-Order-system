@@ -21,3 +21,24 @@ A role-based backend API built with **Node.js**, **Express**, and **MongoDB** fo
 ├── server.js             # Entry point of the app
 └── README.md             # You're reading it 😉
 
+
+
+---
+
+## ⚙️ Tech Stack
+
+- **Node.js**
+- **Express.js**
+- **MongoDB** with **Mongoose**
+- **JWT** for Authentication
+- **Role-based Access Control** (User/Admin)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+```bash
+git clone 
+cd e-commerce-backend
+
