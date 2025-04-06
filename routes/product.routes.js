@@ -27,6 +27,6 @@ router.patch(
   isAdmin.isAdmin,
   productController.updateProduct
 );
-router.get('/dashboard',productController.getDashBoardStats);
+router.get('/dashboard',authMiddleware.verifyToken,isAdmin.isAdmin,productController.getDashBoardStats);
 
 module.exports = router;

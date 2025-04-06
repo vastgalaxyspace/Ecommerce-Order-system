@@ -1,0 +1,614 @@
+{
+	"info": {
+		"_postman_id": "731f526e-9ba0-4710-91b1-8de3023b507f",
+		"name": "E-Commerce Backend API",
+		"description": "A backend API for managing user authentication, products, and orders with role-based access control.EndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32314612"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"dhiraj123\",\r\n  \"email\": \"dhiraj@example.com\",\r\n  \"password\": \"password123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"register"
+					]
+				},
+				"description": "This is register the customer . In this role is set by default customer so the saved as customer in database.\n\nThis route registers a new user using username, email, and password.EndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"dhiraj@example.com\",\r\n  \"password\": \"password123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				},
+				"description": "This is use to login using email and password .\n\nIn this toekn are generated show in json formeted which is use for further request"
+			},
+			"response": []
+		},
+		{
+			"name": "profile",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjI1Yzc1ZmJmYTkyN2ZiYzg0OWRhMyIsImVtYWlsIjoiZGhpcmFqQGV4YW1wbGUuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzQzOTM2NzcxLCJleHAiOjE3NDM5NDAzNzF9.whjmOWQBEfI0kpL_o6xR9WqC2CtltYgauxxmx2-CekQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/auth/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"profile"
+					]
+				},
+				"description": "This is used for get the profile of user .\n\nIn this extract data from token to get the profile"
+			},
+			"response": []
+		},
+		{
+			"name": "getall products",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/products/getallproducts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"getallproducts"
+					]
+				},
+				"description": "This is use to get the all product detail .\n\nIn this we also use query to filter the datbase for output"
+			},
+			"response": []
+		},
+		{
+			"name": "Register admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"adminUser\",\r\n  \"email\": \"admin1@example.com\",\r\n  \"password\": \"adminpass123\",\r\n  \"role\": \"admin\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"register"
+					]
+				},
+				"description": "this is use for register as admin . In this we have to specify to set role as admin"
+			},
+			"response": []
+		},
+		{
+			"name": "login by admin",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \r\n  \"email\": \"admin1@example.com\",\r\n  \"password\": \"adminpass123\"\r\n  \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add the products",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjI2MDhkZmJmYTkyN2ZiYzg0OWRhYyIsImVtYWlsIjoiYWRtaW4xQGV4YW1wbGUuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQzOTM3ODU1LCJleHAiOjE3NDM5NDE0NTV9.XvocPMZ4NcMemJpNL9mMNppXq80ru4xyx80Rr3ruFyw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Samsung Galaxy S21\",\r\n  \"description\": \"Flagship smartphone with triple camera and AMOLED display.\",\r\n  \"price\": 54999,\r\n  \"stock\": 20,\r\n  \"category\": \"Smartphones\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/products/addproduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"addproduct"
+					]
+				},
+				"description": "This is used to add the product in product list.\n\nIn this only Admin add this product . the customer are have the acess deined . this is done by using token in this store role which is extract and used"
+			},
+			"response": []
+		},
+		{
+			"name": "get the product with help of id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjI2MDhkZmJmYTkyN2ZiYzg0OWRhYyIsImVtYWlsIjoiYWRtaW4xQGV4YW1wbGUuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQzOTM3ODU1LCJleHAiOjE3NDM5NDE0NTV9.XvocPMZ4NcMemJpNL9mMNppXq80ru4xyx80Rr3ruFyw",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/products/getproduct/67f16e3979beaa60427078fb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"getproduct",
+						"67f16e3979beaa60427078fb"
+					]
+				},
+				"description": "this is use to see the product in detail or single product with the help of product id which is stored in database"
+			},
+			"response": []
+		},
+		{
+			"name": "update the product only by admin",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjI2MDhkZmJmYTkyN2ZiYzg0OWRhYyIsImVtYWlsIjoiYWRtaW4xQGV4YW1wbGUuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQzOTM3ODU1LCJleHAiOjE3NDM5NDE0NTV9.XvocPMZ4NcMemJpNL9mMNppXq80ru4xyx80Rr3ruFyw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"price\":444,\r\n    \"stock\":20\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/products/updateproduct/67f16e3979beaa60427078fb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"updateproduct",
+						"67f16e3979beaa60427078fb"
+					],
+					"query": [
+						{
+							"key": "A",
+							"value": null,
+							"disabled": true
+						}
+					]
+				},
+				"description": "this update the product done only admin which is stored after updated in database . In this use token to store the role information"
+			},
+			"response": []
+		},
+		{
+			"name": "This is the dashboard for data analysis",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjI2MDhkZmJmYTkyN2ZiYzg0OWRhYyIsImVtYWlsIjoiYWRtaW4xQGV4YW1wbGUuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQzOTQyMDQ5LCJleHAiOjE3NDM5NDU2NDl9.HXHOygrqidnkTwmaBIG-tcbu7jIwEhAg_sbsAH0Wb00",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/products/dashboard",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						"dashboard"
+					]
+				},
+				"description": "THis is dashboard which is show all data for analysis like {  \n\"totalOrders\": 6,  \n\"totalRevenue\": 0,  \n\"monthlySales\": \\[  \n{  \n\"_id\": 4,  \n\"totalsSales\": 18891,  \n\"count\": 3  \n}  \n\\],  \n\"topProducts\": \\[  \n{  \n\"_id\": \"67f16ed679beaa6042707902\",  \n\"totalSold\": 6,  \n\"name\": \"Running Shoes\"  \n},  \n{  \n\"_id\": \"67f16ee279beaa6042707904\",  \n\"totalSold\": 5,  \n\"name\": \"Laptop Stand\"  \n},  \n{  \n\"_id\": \"67f136a4541b2e3b59ef3f20\",  \n\"totalSold\": 5,  \n\"name\": \"Samsung Galaxy S24\"  \n},  \n{  \n\"_id\": \"67f16e3979beaa60427078fb\",  \n\"totalSold\": 5,  \n\"name\": \"Wireless Mouse\"  \n},  \n{  \n\"_id\": \"67f16ef079beaa6042707906\",  \n\"totalSold\": 3,  \n\"name\": \"Water Bottle\"  \n}  \n\\]  \n}"
+			},
+			"response": []
+		},
+		{
+			"name": "create order by customer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=8A10381353DC4A9917D631341606C621",
+						"name": "cookie",
+						"type": "text"
+					},
+					{
+						"key": "Cache-Control",
+						"value": "no-cache",
+						"name": "cache-control",
+						"type": "text"
+					},
+					{
+						"key": "Postman-Token",
+						"value": "<calculated when request is sent>",
+						"name": "postman-token",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"name": "content-type",
+						"type": "text"
+					},
+					{
+						"key": "Content-Length",
+						"value": "<calculated when request is sent>",
+						"name": "content-length",
+						"type": "text"
+					},
+					{
+						"key": "Host",
+						"value": "<calculated when request is sent>",
+						"name": "host",
+						"type": "text"
+					},
+					{
+						"key": "User-Agent",
+						"value": "PostmanRuntime/7.39.1",
+						"name": "user-agent",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "*/*",
+						"name": "accept",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate, br",
+						"name": "accept-encoding",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"name": "connection",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjI1Yzc1ZmJmYTkyN2ZiYzg0OWRhMyIsImVtYWlsIjoiZGhpcmFqQGV4YW1wbGUuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzQzOTM5OTE1LCJleHAiOjE3NDM5NDM1MTV9.eiItfKvJKIyRDMtOZ1s0H_6a3Kh3nlgZLQk0emp1p3I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"product\": \"67f16ed679beaa6042707902\",\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"product\": \"67f16ee279beaa6042707904\",\r\n      \"quantity\": 1\r\n    }\r\n  ],\r\n  \"address\": \"123 ABC Street, Mumbai, India\",\r\n  \"paymentMethod\": \"UPI\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/orders/createorder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"orders",
+						"createorder"
+					]
+				},
+				"description": "this is order is only created by customer with help of token"
+			},
+			"response": [
+				{
+					"name": "create order by customer",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjI1Yzc1ZmJmYTkyN2ZiYzg0OWRhMyIsImVtYWlsIjoiZGhpcmFqQGV4YW1wbGUuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzQzOTM5OTE1LCJleHAiOjE3NDM5NDM1MTV9.eiItfKvJKIyRDMtOZ1s0H_6a3Kh3nlgZLQk0emp1p3I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"product\": \"67f16ed679beaa6042707902\",\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"product\": \"67f16ee279beaa6042707904\",\r\n      \"quantity\": 1\r\n    }\r\n  ],\r\n  \"address\": \"123 ABC Street, Mumbai, India\",\r\n  \"paymentMethod\": \"UPI\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/orders/createorder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"orders",
+								"createorder"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"type": "text"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"type": "text"
+						},
+						{
+							"key": "Content-Length",
+							"value": "511",
+							"type": "text"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1ff-VT1i3vz73O8Jf0DwfWU4MeBo3kc\"",
+							"type": "text"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Apr 2025 11:49:21 GMT",
+							"type": "text"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"type": "text"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Order created successfully\",\n    \"order\": {\n        \"customer\": \"67f25c75fbfa927fbc849da3\",\n        \"products\": [\n            {\n                \"product\": \"67f16ed679beaa6042707902\",\n                \"quantity\": 2,\n                \"_id\": \"67f26a41f344773b0723272f\"\n            },\n            {\n                \"product\": \"67f16ee279beaa6042707904\",\n                \"quantity\": 1,\n                \"_id\": \"67f26a41f344773b07232730\"\n            }\n        ],\n        \"totalAmount\": 6297,\n        \"status\": \"Pending\",\n        \"iscanceled\": false,\n        \"address\": \"123 ABC Street, Mumbai, India\",\n        \"paymentMethod\": \"UPI\",\n        \"_id\": \"67f26a41f344773b0723272e\",\n        \"createdAt\": \"2025-04-06T11:49:21.936Z\",\n        \"updatedAt\": \"2025-04-06T11:49:21.936Z\",\n        \"__v\": 0\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "get orders if admin see all orders if customer only see his orders",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjI1Yzc1ZmJmYTkyN2ZiYzg0OWRhMyIsImVtYWlsIjoiZGhpcmFqQGV4YW1wbGUuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzQzOTM5OTE1LCJleHAiOjE3NDM5NDM1MTV9.eiItfKvJKIyRDMtOZ1s0H_6a3Kh3nlgZLQk0emp1p3I",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/orders/getallorders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"orders",
+						"getallorders"
+					]
+				},
+				"description": "this use to all orders\n\n1. If the customer then only see his order\n    \n2. if admn then see all customer orders\n    \n\nwith the help of token"
+			},
+			"response": []
+		},
+		{
+			"name": "order canceld by customer",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjAyYjhhN2EyOGMyYmZiZTEyNWE1MyIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTc0Mzk0MDYwMSwiZXhwIjoxNzQzOTQ0MjAxfQ.34zuOueAEGoT8ypTYV2XBKghjR8l-SewAPjZj51m8kY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/orders/67f171da3ba30bc907f543a6/cancel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"orders",
+						"67f171da3ba30bc907f543a6",
+						"cancel"
+					]
+				},
+				"description": "this is use to cancel the order by customer using id of the order"
+			},
+			"response": []
+		},
+		{
+			"name": "for logout for customer or admin",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjI2MDhkZmJmYTkyN2ZiYzg0OWRhYyIsImVtYWlsIjoiYWRtaW4xQGV4YW1wbGUuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQzOTM3ODU1LCJleHAiOjE3NDM5NDE0NTV9.XvocPMZ4NcMemJpNL9mMNppXq80ru4xyx80Rr3ruFyw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/auth/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"logout"
+					]
+				},
+				"description": "This is use to logut for customer or admin"
+			},
+			"response": []
+		}
+	]
+}
