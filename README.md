@@ -6,3 +6,4 @@ A role-based backend API built with **Node.js**, **Express**, and **MongoDB** fo
 
 ## 📁 Folder Structure
 
+. ├── config/ # Database configuration ├── controllers/ # Route handler logic ├── docs/ # Postman collection or API docs (optional) ├── middleware/ # Role-based and auth middleware │ └── roleMiddleware.js ├── models/ # Mongoose schemas (User, Product, Order) ├── routes/ # Route definitions │ ├── auth.routes.js │ ├── order.routes.js │ └── product.routes.js ├── .env # Environment variables (not uploaded) ├── server.js # Entry point of the app └── README.md
