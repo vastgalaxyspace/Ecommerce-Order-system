@@ -11,13 +11,10 @@ authMiddleware.verifyToken = (req, res, next) => {
   }
 
   const token = authHeader.split(" ")[1];
-  ;
- 
-
   try {
     const decoded = jwt.verify(token, JWT_SERECT);
-    
-    req.user = decoded; // Store user info from token in req.user
+
+    req.user = decoded;
     next();
   } catch (error) {
     return res.status(401).json({ message: "Invalid token" });
