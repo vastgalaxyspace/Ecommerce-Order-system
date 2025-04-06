@@ -1,4 +1,6 @@
 const Product = require("../models/Product");
+const Order=require("../models/Order");
+const User=require("../models/User");
 
 const productController = {};
 
@@ -95,5 +97,67 @@ productController.updateProduct = async (req, res) => {
     res.status(500).json({ message: "error updating product" });
   }
 };
+
+productController.getDashBoardStats=async(req,res)=>{
+  try{
+
+    const totalOrders=await Order.countDocuments();
+    const totalRevenue=await Order.aggregate([
+
+      {$match:{iscanceled:false}},
+      {$group:{_id:null,totalRevenue:{$sum:"$totalAmount"}}}
+    ]);
+
+    const monthlySales=await Order.aggregate([
+      {$match:{iscanceled:false}},
+      {$group:{
+        _id:{$month:"$createdAt"},
+        totalsSales:{$sum:"$totalAmount"},
+        count:{$sum:1}
+      },},
+      {$sort:{_id:1}}
+      ]);
+
+      const topProducts = await Order.aggregate([
+        { $unwind: "$products" },
+        {
+          $group: {
+            _id: "$products.product",
+            totalSold: { $sum: "$products.quantity" },
+          },
+        },
+        {
+          $lookup: {
+            from: "products",
+            localField: "_id",
+            foreignField: "_id",
+            as: "productDetails",
+          },
+        },
+        { $unwind: "$productDetails" },
+        { $sort: { totalSold: -1 } },
+        { $limit: 5 },
+        {
+          $project: {
+            name: "$productDetails.name",
+            totalSold: 1,
+          },
+        },
+      ]);
+
+      res.json({
+        totalOrders,
+        totalRevenue: totalRevenue[0]?.revenue || 0,
+        monthlySales,
+        topProducts,
+      });
+
+
+  }catch(error){
+    res.status(500).json({message:"error fetching dashboard stats"})
+  }
+}
+
+
 
 module.exports = productController;
