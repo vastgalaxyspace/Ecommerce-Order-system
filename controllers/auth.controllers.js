@@ -57,7 +57,7 @@ authcontroller.login = async (req, res) => {
         role: user.role,
       },
       JWT_SERECT,
-      { expiresIn: "1h" }
+      { expiresIn: "10h" }
     );
 
     res.status(200).json({

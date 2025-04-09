@@ -55,7 +55,7 @@ orderController.createOrder = async (req, res) => {
       .json({ message: "Order created successfully", order: newOrder });
   } catch (err) {
     console.log(err);
-    console.error("Order creation error:", err); // this will show the real error in terminal
+    console.error("Order creation error:", err); 
 
     res.status(500).json({ message: "Internal server error" });
   }
@@ -99,6 +99,9 @@ orderController.cancelOrder = async (req, res) => {
     const order = await Order.findById(orderid);
     if (!order) {
       return res.status(404).json({ message: "Order not found" });
+    }
+    if (order.customer.toString() !== userid) {
+      return res.status(403).json({ message: "You are not authorized to cancel this order" });
     }
 
     if (order.iscanceled || order.status === "cancelled") {
